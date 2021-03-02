@@ -11,8 +11,8 @@ A small script that takes a netlist created in Orcad and creates a pin-net mappi
 
 ## How to run progam
 * A netlist needs to be generated prior to running this script.
-    * In order to generate the file called "pstxnet.dat"
-    * The program is ran by running the script called "Component_net_table.bat"
+   * In order to generate the file called "pstxnet.dat"
+   * The program is ran by running the script called "Component_net_table.bat"
 * A dialog will show up
    * Navigate to the folder where the netlist is located. 
    * The folder needs to have a file called "pstxnet.dat"
