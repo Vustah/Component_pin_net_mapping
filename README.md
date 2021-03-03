@@ -1,6 +1,9 @@
 # Component_pin_net_mapping
 A small script that takes a netlist created in Orcad and creates a pin-net mapping for components, connectors and testpoints. 
-
+In order for this to work, the following naming conventions need to be set:
+* Components need to have the letter "U".
+* Connectors need to have the letter "J".
+* Testpoints need to have the letter "TP".
 
 ## How to "install" program
 * Clone the repo from GitHub
