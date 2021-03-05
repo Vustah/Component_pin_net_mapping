@@ -30,7 +30,7 @@ def component_table(nets, path, component):
 
 def parse_component_dict(path, component_dict, comp_name,filename,wb):
     #Component_csv = "Pin number \tPin Name \tNet Name\n"
-    Component = [["Pin number","Pin Name" ,"Net Name"]]
+    Component = [["Pin number","Pin Name" ,"Net Name", "Description", "Notes"]]
     for net_key in component_dict:
         for net in component_dict[net_key]:
             pin_name = net["pin_name"]
