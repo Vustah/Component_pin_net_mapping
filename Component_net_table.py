@@ -7,7 +7,7 @@ def writeExcel(filename,sheetname,content,wb):
     sheet = wb.add_sheet(sheetname)
     for idx,row in enumerate(content):
         for jdx,cell in enumerate(row):
-            sheet.write(idx,jdx,cell)
+            sheet.write(int(idx),jdx,cell)
     
 def component_table(nets, path, component):
     component_dict = {}
@@ -60,7 +60,11 @@ def find_and_write_components(nets,path,componet_group_to_find,filename):
             component_dict, component_exist = component_table(nets, path, comp_name)
             if component_exist:
                 parse_component_dict(path, component_dict,comp_name,filename,wb)
-        wb.save(filename)
+        try:
+            wb.save(filename)
+        except PermissionError: 
+            print("This file is already open somewhere. \nYou need to close it and try again.")
+            exit(1)
         
 
 def write_testPoints(path, filename,content):
@@ -81,6 +85,7 @@ def main():
     testpointContent = TP.sort_TestPoints(nets,path)
     write_testPoints(path,"TestPoints.xls",testpointContent)
     
+    print("Success")
 
 if "__main__" == __name__:
     main()
