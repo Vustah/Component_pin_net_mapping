@@ -55,11 +55,13 @@ def find_and_write_components(nets,path,componet_group_to_find,filename):
     wb = xlwt.Workbook()
     filename = path+"\\"+filename
     IC_list = find_all_IC(nets,componet_group_to_find)
-    for comp_name in IC_list:
-        component_dict, component_exist = component_table(nets, path, comp_name)
-        if component_exist:
-            parse_component_dict(path, component_dict,comp_name,filename,wb)
-    wb.save(filename)
+    if IC_list:
+        for comp_name in IC_list:
+            component_dict, component_exist = component_table(nets, path, comp_name)
+            if component_exist:
+                parse_component_dict(path, component_dict,comp_name,filename,wb)
+        wb.save(filename)
+        
 
 def write_testPoints(path, filename,content):
     filename = path+ "\\" + filename
