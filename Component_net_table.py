@@ -65,7 +65,8 @@ def find_and_write_components(nets,path,componet_group_to_find,filename):
         except PermissionError: 
             print("This file is already open somewhere. \nYou need to close it and try again.")
             exit(1)
-        
+    else:
+        print("No component with refDes %s found.\n ---> No file created" %componet_group_to_find)
 
 def write_testPoints(path, filename,content):
     filename = path+ "\\" + filename
@@ -80,10 +81,14 @@ def main():
     infile_content = NP.ReadFile(path,filename)
     nets = NP.parse(infile_content)
     NP.structure_Nets(nets,path)
+
     find_and_write_components(nets,path,"U","Components.xls")
     find_and_write_components(nets,path,"J","Connectors.xls")
     testpointContent = TP.sort_TestPoints(nets,path)
-    write_testPoints(path,"TestPoints.xls",testpointContent)
+    if testpointContent == None:
+        print("No testpoints found")
+    else:
+        write_testPoints(path,"TestPoints.xls",testpointContent)
     
     print("Success")
 
